@@ -129,6 +129,8 @@ def answer_question(question):
             return 'No matching paid orders were found.'
         name, val = max(groups.items(), key=lambda kv: kv[1])
         amount = f'{val:,.0f} units' if metric == 'qty' else money(val)
+        if group_key == 'product' and metric == 'revenue':
+            return f"{name}"
         return f"The {group_key} with the highest {('units sold' if metric == 'qty' else 'revenue')} is {name}, at {amount}."
     # Counts and quantities
     if any(w in ql for w in ['units', 'quantity', 'items sold', 'how many items']) and not any(w in ql for w in ['how much', 'revenue', 'sales amount']):
