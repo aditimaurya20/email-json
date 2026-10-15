@@ -157,7 +157,9 @@ def answer_question(question):
         if groups:
             name, val = max(groups.items(), key=lambda kv: kv[1])
             return f"{name} has the highest revenue at {money(val)}."
-    return f"Total revenue from {len(paid)} matching paid orders is {money(total)}. Only paid orders count as revenue; values are converted to USD using the supplied rates."
+    
+        return f"Total revenue is {money(total)} from {len(paid)} matching paid orders."
+
 
 @app.get('/')
 def health():
